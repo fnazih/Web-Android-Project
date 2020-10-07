@@ -36,22 +36,11 @@ export class EventList {
     }
   }
 
-  // getBooksOf(author: string): Book[]{
-  //   let bookshelff = [];
-  //
-  //   for(let i = 0; i < this.bookshelf.length; i++) {
-  //     if(this.bookshelf[i].author.localeCompare(author) == 0) {
-  //       bookshelff.push(this.bookshelf[i]);
-  //     }
-  //   }
-  //   return bookshelff;
-  // }
-
   getAllEvents(): Evenement[] | undefined {
     return this.eventList.sort((bookA, bookB) => bookA.date_start.localeCompare(bookB.date_start));
   }
 
-  getTotalNumberOfBooks() : number {
+  getTotalNumberOfEvents() : number {
     return this.eventList.length;
   }
 }
