@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="deepDarkPurple">#1A1423</color>
+    <color name="MauvyPurple">#372549</color>
+    <color name="MauvyTaupe">#774C60</color>
+    <color name="DeepCoral">#B75D69</color>
+    <color name="LightBeige">#EACDC2</color>
+
     <color name="colorPrimary">#6200EE</color>
     <color name="deepPurple">#61476F</color>
     <color name="bottleGreen">#435B48</color>

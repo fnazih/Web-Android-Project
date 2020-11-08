@@ -2,5 +2,14 @@
     <string name="app_name">Project App</string>
     <string name="main_title">Bienvenue sur notre application d\'Activités à Paris !</string>
     <string name="connectMessage">Veuillez vous connecter afin d\'accéder à vos favoris :</string>
+    <string name="startButtonText">Commencer</string>
+    <string name="appExplanation">Dans cette app, vous aurez accès à une base de données très complète listant un grand nombre d\'activités à faire à Paris.
+        Après avoir appuyé sur le bouton "Commencer", pour aurez accès à différentes listes contenant les événements à Paris.</string>
+    <string name="leadTextString">Phrase descriptive de l\'event</string>
+    <string name="addressName">Address name</string>
+    <string name="addressStreet">Address street</string>
+    <string name="addressZipCode">ZipCode</string>
+    <string name="addressCity">City</string>
+    <string name="transportIndications">Transport indications</string>
 
 </resources>
