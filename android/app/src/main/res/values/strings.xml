@@ -11,5 +11,6 @@
     <string name="addressZipCode">ZipCode</string>
     <string name="addressCity">City</string>
     <string name="transportIndications">Transport indications</string>
-
+    <string name="categories">Decouvrez toutes nos categories d\'evenements !</string>
+    <string name="categoryName">Category name</string>
 </resources>
