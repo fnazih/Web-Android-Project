@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project App</string>
+    <string name="app_name">Events in Paris</string>
     <string name="main_title">Bienvenue sur notre application d\'Activités à Paris !</string>
     <string name="connectMessage">Veuillez vous connecter afin d\'accéder à vos favoris :</string>
     <string name="startButtonText">Commencer</string>
