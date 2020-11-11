@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.ExpandableListView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ActivityMain: AppCompatActivity() {
+class ActivityMain: AppCompatActivity(){
     private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
@@ -27,7 +27,6 @@ class ActivityMain: AppCompatActivity() {
     private fun showList() {
         categories = ArrayList()
         subCategories = HashMap()
-
 
         //Test de la liste avec des elements au hasard
         categories.add("Categorie 1")
@@ -65,8 +64,7 @@ class ActivityMain: AppCompatActivity() {
         subCategories[categories[3]] = subCategory4
     }
 
-
-    public fun onChildClickListener(parent: ExpandableListView, v: View, groupPosition: Int, childPosition: Int, id: Long) {
+    public fun onChildClick(parent: ExpandableListView, v: View, groupPosition: Int, childPosition: Int, id: Long) {
         val intent = Intent(this, SubCategoryActivity::class.java)
         intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
         this.startActivity(intent)
