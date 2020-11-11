@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_title">Welcome to our Events in Paris app !</string>
+    <string name="connectMessage">Please click the following button to access your favorites :</string>
+    <string name="startButtonText">Start</string>
+    <string name="appExplanation">In this app, you will have access to a very complete database of activities you can do in Paris. After clicking the \"Start\" button, you will have access to different event category lists.</string>
+    <string name="leadTextString">Sentence describing the event</string>
+    <string name="addressName">Address name</string>
+    <string name="addressStreet">Street</string>
+    <string name="addressZipCode">ZipCode</string>
+    <string name="addressCity">City</string>
+    <string name="transportIndications">Transports indications</string>
+    <string name="categories">Discover all of our events categories !</string>
+    <string name="categoryName">Category name</string>
+</resources>
