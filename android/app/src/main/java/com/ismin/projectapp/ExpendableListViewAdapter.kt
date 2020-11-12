@@ -1,13 +1,11 @@
 package com.ismin.projectapp
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.Button
-import android.widget.ExpandableListView
 import android.widget.TextView
 
 class ExpendableListViewAdapter internal constructor(private val context: Context,

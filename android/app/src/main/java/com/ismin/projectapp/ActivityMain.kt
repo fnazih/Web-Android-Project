@@ -7,26 +7,25 @@ import android.view.View
 import android.widget.ExpandableListView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener {
+class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener{
     private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
+    private lateinit var expandableListView: ExpandableListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //showList()
-
+        updateList()
+        expandableListView = findViewById(R.id.expendableListView)
         listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
-        expendableListView.setAdapter(listViewAdapter)
-
+        expandableListView.setAdapter(listViewAdapter)
+        expandableListView.setOnGroupClickListener(this)
         expendableListView.setOnChildClickListener(this)
-
-        showList()
     }
 
-    private fun showList() {
+    private fun updateList() {      //fct a adapter qd on aura la bdd
         categories = ArrayList()
         subCategories = HashMap()
 
@@ -66,6 +65,24 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         subCategories[categories[3]] = subCategory4
     }
 
+    override fun onGroupClick(
+        parent: ExpandableListView,
+        v: View?,
+        groupPosition: Int,
+        id: Long
+    ): Boolean {
+        System.out.println("Ca rentre dans OnGroupClick")
+        parent.smoothScrollToPosition(groupPosition)
+
+        if(parent.isGroupExpanded(groupPosition)) {
+            parent.collapseGroup(groupPosition)
+        }
+        else {
+            parent.expandGroup(groupPosition)
+        }
+        return false
+    }
+
     override fun onChildClick(
         parent: ExpandableListView?,
         v: View?,
@@ -73,15 +90,9 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         childPosition: Int,
         id: Long
     ): Boolean {
-        var isSelected = false
-
-        if(this.listViewAdapter.isChildSelectable(groupPosition, childPosition)) {
-            val intent = Intent(this, SubCategoryActivity::class.java)
-            intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
-            this.startActivity(intent)
-            isSelected = true
-        }
-
-        return isSelected
+        val intent = Intent(this, SubCategoryActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
+        this.startActivity(intent)
+        return false
     }
 }

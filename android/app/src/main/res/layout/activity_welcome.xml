@@ -13,17 +13,18 @@
         android:id="@+id/mainTitleID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
         android:fontFamily="monospace"
         android:paddingHorizontal="15dp"
         android:textAlignment="center"
         android:textSize="32sp"
         android:textStyle="bold"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.208"
         tools:text="@string/main_title" />
 
     <TextView
@@ -31,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:paddingHorizontal="15dp"
         android:text="@string/appExplanation"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,15 +47,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/rosyPink"
-        android:textColor="@color/cyan"
         android:paddingHorizontal="20dp"
         android:text="@string/startButtonText"
+        android:textColor="@color/cyan"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appDescription"
         app:layout_constraintVertical_bias="0.428" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
