@@ -49,7 +49,6 @@
         android:textColor="@color/cyan"
         android:paddingHorizontal="20dp"
         android:text="@string/startButtonText"
-        android:onClick="goToCategories"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

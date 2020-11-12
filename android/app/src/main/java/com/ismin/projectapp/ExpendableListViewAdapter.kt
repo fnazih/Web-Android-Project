@@ -1,11 +1,13 @@
 package com.ismin.projectapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.Button
+import android.widget.ExpandableListView
 import android.widget.TextView
 
 class ExpendableListViewAdapter internal constructor(private val context: Context,
@@ -13,17 +15,13 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
                                                      private val subCategories: HashMap<String, ArrayList<String>>)
     : BaseExpandableListAdapter() {
 
-    override fun getGroup(groupPosition: Int): Any {
-        return categories[groupPosition]
-    }
+    public fun getCategories(): ArrayList<String> { return categories }
 
-    override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
-        return true
-    }
+    override fun getGroup(groupPosition: Int): Any { return categories[groupPosition] }
 
-    override fun hasStableIds(): Boolean {
-        return false
-    }
+    override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean { return true }
+
+    override fun hasStableIds(): Boolean { return false }
 
     override fun getGroupView(
         groupPosition: Int,
@@ -45,17 +43,11 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
         return convertView
     }
 
-    override fun getChildrenCount(groupPosition: Int): Int {
-        return this.subCategories[this.categories[groupPosition]]!!.size
-    }
+    override fun getChildrenCount(groupPosition: Int): Int { return this.subCategories[this.categories[groupPosition]]!!.size }
 
-    override fun getChild(groupPosition: Int, childPosition: Int): Any {
-        return this.subCategories[this.categories[groupPosition]]!![childPosition]
-    }
+    override fun getChild(groupPosition: Int, childPosition: Int): Any { return this.subCategories[this.categories[groupPosition]]!![childPosition] }
 
-    override fun getGroupId(groupPosition: Int): Long {
-        return groupPosition.toLong()
-    }
+    override fun getGroupId(groupPosition: Int): Long { return groupPosition.toLong() }
 
     override fun getChildView(
         groupPosition: Int,
@@ -78,11 +70,7 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
         return convertView
     }
 
-    override fun getChildId(groupPosition: Int, childPosition: Int): Long {
-        return childPosition.toLong()
-    }
+    override fun getChildId(groupPosition: Int, childPosition: Int): Long { return childPosition.toLong() }
 
-    override fun getGroupCount(): Int {
-        return categories.size
-    }
+    override fun getGroupCount(): Int { return categories.size }
 }

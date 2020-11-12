@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.ExpandableListView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ActivityMain: AppCompatActivity(){
+class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener {
     private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
@@ -16,10 +16,12 @@ class ActivityMain: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showList()
+        //showList()
 
         listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
         expendableListView.setAdapter(listViewAdapter)
+
+        expendableListView.setOnChildClickListener(this)
 
         showList()
     }
@@ -64,9 +66,22 @@ class ActivityMain: AppCompatActivity(){
         subCategories[categories[3]] = subCategory4
     }
 
-    public fun onChildClick(parent: ExpandableListView, v: View, groupPosition: Int, childPosition: Int, id: Long) {
-        val intent = Intent(this, SubCategoryActivity::class.java)
-        intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
-        this.startActivity(intent)
+    override fun onChildClick(
+        parent: ExpandableListView?,
+        v: View?,
+        groupPosition: Int,
+        childPosition: Int,
+        id: Long
+    ): Boolean {
+        var isSelected = false
+
+        if(this.listViewAdapter.isChildSelectable(groupPosition, childPosition)) {
+            val intent = Intent(this, SubCategoryActivity::class.java)
+            intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
+            this.startActivity(intent)
+            isSelected = true
+        }
+
+        return isSelected
     }
 }

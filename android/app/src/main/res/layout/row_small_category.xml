@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
+    <TextView
         android:id="@+id/smallCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Sous-categorie"
         android:background="@color/lightBlue"
         android:textColor="@color/rosyPink"
+        android:textAlignment="center"
+        android:paddingTop="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
