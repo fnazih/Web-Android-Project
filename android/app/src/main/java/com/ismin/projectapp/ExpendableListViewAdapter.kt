@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
-import android.widget.Button
 import android.widget.TextView
 
 class ExpendableListViewAdapter internal constructor(private val context: Context,
@@ -62,7 +61,7 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
             convertView = inflator.inflate(R.layout.row_small_category, null)
         }
 
-        val subCategoryName = convertView!!.findViewById<Button>(R.id.smallCategory)
+        val subCategoryName = convertView!!.findViewById<TextView>(R.id.smallCategory)
         subCategoryName.text = subCategoryTitle
 
         return convertView
