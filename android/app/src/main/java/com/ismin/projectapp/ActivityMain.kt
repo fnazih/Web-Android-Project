@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.ExpandableListView
 import kotlinx.android.synthetic.main.activity_main.*
 
+private const val SUBCATEGORY_FRAGMENT_KEY = "SUBCATEGORY_FRAGMENT_KEY"
+
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener{
     private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
@@ -90,9 +92,17 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         childPosition: Int,
         id: Long
     ): Boolean {
-        val intent = Intent(this, SubCategoryActivity::class.java)
+        val intent = Intent(this, SubCategoryFragment::class.java)
         intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
+        displaySubCategoryFragment(groupPosition, childPosition)
         this.startActivity(intent)
         return false
+    }
+
+    fun displaySubCategoryFragment(groupPosition: Int, childPosition: Int) {
+        val bundle = Bundle()
+        bundle.putString(SUBCATEGORY_FRAGMENT_KEY, listViewAdapter.getChild(groupPosition, childPosition).toString())
+        val fragment = SubCategoryFragment()
+        fragment.arguments = bundle
     }
 }

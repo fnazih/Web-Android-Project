@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class recyclerViewAdapter(private val events: ArrayList<Event>): RecyclerView.Adapter<EventViewHolder>() {
+class EventAdapter(private val events: ArrayList<Event>): RecyclerView.Adapter<EventViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.event_row_layout, parent, false)
         return EventViewHolder(row)
