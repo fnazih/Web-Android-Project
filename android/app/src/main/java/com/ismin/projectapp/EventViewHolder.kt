@@ -1,3 +1,8 @@
+/**
+ * @authors : Valentin POLLART - Fatima-Zohra NAZIH
+ * @title : Events in Paris
+ */
+
 package com.ismin.projectapp
 
 import android.view.View
@@ -12,5 +17,4 @@ class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var eventAddressName = itemView.findViewById<TextView>(R.id.addressNameView)
     var eventAddressCity = itemView.findViewById<TextView>(R.id.addressCity)
     var eventAddressZipCode = itemView.findViewById<TextView>(R.id.addressZipCode)
-
 }

@@ -1,3 +1,8 @@
+/**
+ * @authors : Valentin POLLART - Fatima-Zohra NAZIH
+ * @title : Events in Paris
+ */
+
 package com.ismin.projectapp
 
 import android.content.Intent
@@ -5,11 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ExpandableListView
-import kotlinx.android.synthetic.main.activity_main.*
 
-private const val SUBCATEGORY_FRAGMENT_KEY = "SUBCATEGORY_FRAGMENT_KEY"
-
-class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener{
+class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener {
     private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
@@ -23,8 +25,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         expandableListView = findViewById(R.id.expendableListView)
         listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
         expandableListView.setAdapter(listViewAdapter)
-        expandableListView.setOnGroupClickListener(this)
-        expendableListView.setOnChildClickListener(this)
+        expandableListView.setOnChildClickListener(this)
     }
 
     private fun updateList() {      //fct a adapter qd on aura la bdd
@@ -61,28 +62,10 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         subCategory4.add("SubCategory3")
         subCategory4.add("SubCategory4")
 
-        subCategories[categories[0]] = subCategory1
-        subCategories[categories[1]] = subCategory2
-        subCategories[categories[2]] = subCategory3
-        subCategories[categories[3]] = subCategory4
-    }
-
-    override fun onGroupClick(
-        parent: ExpandableListView,
-        v: View?,
-        groupPosition: Int,
-        id: Long
-    ): Boolean {
-        System.out.println("Ca rentre dans OnGroupClick")
-        parent.smoothScrollToPosition(groupPosition)
-
-        if(parent.isGroupExpanded(groupPosition)) {
-            parent.collapseGroup(groupPosition)
-        }
-        else {
-            parent.expandGroup(groupPosition)
-        }
-        return false
+        this.subCategories[categories[0]] = subCategory1
+        this.subCategories[categories[1]] = subCategory2
+        this.subCategories[categories[2]] = subCategory3
+        this.subCategories[categories[3]] = subCategory4
     }
 
     override fun onChildClick(
@@ -92,17 +75,11 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         childPosition: Int,
         id: Long
     ): Boolean {
-        val intent = Intent(this, SubCategoryFragment::class.java)
-        intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
-        displaySubCategoryFragment(groupPosition, childPosition)
-        this.startActivity(intent)
-        return false
-    }
 
-    fun displaySubCategoryFragment(groupPosition: Int, childPosition: Int) {
-        val bundle = Bundle()
-        bundle.putString(SUBCATEGORY_FRAGMENT_KEY, listViewAdapter.getChild(groupPosition, childPosition).toString())
-        val fragment = SubCategoryFragment()
-        fragment.arguments = bundle
+        val intent = Intent(this, SubCategoryActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
+        this.startActivity(intent)
+
+        return false
     }
 }

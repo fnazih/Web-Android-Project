@@ -1,3 +1,8 @@
+/**
+ * @authors : Valentin POLLART - Fatima-Zohra NAZIH
+ * @title : Events in Paris
+ */
+
 package com.ismin.projectapp
 
 import android.content.Context
@@ -40,7 +45,10 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
         return convertView
     }
 
-    override fun getChildrenCount(groupPosition: Int): Int { return this.subCategories[this.categories[groupPosition]]!!.size }
+    override fun getChildrenCount(groupPosition: Int): Int {
+        return 1
+        //return this.subCategories[this.categories[groupPosition]]!!.size
+    }
 
     override fun getChild(groupPosition: Int, childPosition: Int): Any { return this.subCategories[this.categories[groupPosition]]!![childPosition] }
 
