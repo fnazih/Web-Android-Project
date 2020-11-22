@@ -11,10 +11,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    var eventIcon = itemView.findViewById<ImageView>(R.id.eventImageView)
-    var eventTitle = itemView.findViewById<TextView>(R.id.eventTitleView)
-    var eventDescription = itemView.findViewById<TextView>(R.id.eventDescriptionView)
-    var eventAddressName = itemView.findViewById<TextView>(R.id.addressNameView)
-    var eventAddressCity = itemView.findViewById<TextView>(R.id.addressCity)
-    var eventAddressZipCode = itemView.findViewById<TextView>(R.id.addressZipCode)
+    var eventIcon: ImageView
+    var eventTitle: TextView
+    var eventDate: TextView
+
+    init {
+        this.eventTitle = itemView.findViewById(R.id.eventTitleRow)
+        this.eventIcon = itemView.findViewById(R.id.eventIcon)
+        this.eventDate = itemView.findViewById(R.id.eventDateListView)
+    }
 }

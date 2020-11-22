@@ -26,7 +26,7 @@ class SubCategoryActivity : AppCompatActivity() {
         this.subCategoryName = findViewById(R.id.subCategoryTitleViewId)
         this.subCategoryName.text = intent.getStringExtra(Intent.EXTRA_TEXT)
 
-        //updateDivider()
+        updateDivider()
 
         this.recyclerView = findViewById(R.id.recyclerView)
         eventAdapter = EventAdapter(events)
@@ -36,6 +36,9 @@ class SubCategoryActivity : AppCompatActivity() {
 
         val dividerItemDecoration = DividerItemDecoration(this, linearLayoutManager.orientation)
         this.recyclerView.addItemDecoration(dividerItemDecoration)
+
+        (recyclerView.adapter as EventAdapter)?.refreshData(events)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     fun updateDivider() {

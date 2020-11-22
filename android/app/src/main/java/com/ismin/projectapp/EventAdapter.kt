@@ -5,26 +5,28 @@
 
 package com.ismin.projectapp
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class EventAdapter(private val events: ArrayList<Event>): RecyclerView.Adapter<EventViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.event_row_layout, parent, false)
         return EventViewHolder(row)
     }
 
     override fun getItemCount(): Int {
-        return events.size
+        return this.events.size
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val (title, description, address) = events[position]
+        val (icon, title, date) = this.events[position]
 
         holder.eventTitle.text = title
-        holder.eventDescription.text = description
-        holder.eventAddressName.text = address
+        holder.eventIcon.setImageResource(icon.toInt())
+        holder.eventDate.text = date
     }
 
     fun refreshData(updatedEvents: java.util.ArrayList<Event>) {
