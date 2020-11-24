@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
     android:clickable="false"
-    tools:context=".SubCategoryActivity" >
+    tools:context=".SubCategoryFragment" >
 
     <LinearLayout
         android:layout_width="match_parent"

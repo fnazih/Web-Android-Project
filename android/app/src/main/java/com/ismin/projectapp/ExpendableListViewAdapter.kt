@@ -17,6 +17,7 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
                                                      private val subCategories: HashMap<String, ArrayList<String>>)
     : BaseExpandableListAdapter() {
 
+
     public fun getCategories(): ArrayList<String> { return categories }
 
     override fun getGroup(groupPosition: Int): Any { return categories[groupPosition] }
@@ -46,8 +47,7 @@ class ExpendableListViewAdapter internal constructor(private val context: Contex
     }
 
     override fun getChildrenCount(groupPosition: Int): Int {
-        return 1
-        //return this.subCategories[this.categories[groupPosition]]!!.size
+        return this.subCategories[this.categories[groupPosition]]!!.size
     }
 
     override fun getChild(groupPosition: Int, childPosition: Int): Any { return this.subCategories[this.categories[groupPosition]]!![childPosition] }

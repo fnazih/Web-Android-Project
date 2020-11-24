@@ -5,7 +5,6 @@
 
 package com.ismin.projectapp
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +21,10 @@ class EventAdapter(private val events: ArrayList<Event>): RecyclerView.Adapter<E
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val (icon, title, date) = this.events[position]
+        val (img_url, title, date) = this.events[position]
 
         holder.eventTitle.text = title
-        holder.eventIcon.setImageResource(icon.toInt())
+        holder.eventIcon.setImageResource(img_url.toInt())
         holder.eventDate.text = date
     }
 

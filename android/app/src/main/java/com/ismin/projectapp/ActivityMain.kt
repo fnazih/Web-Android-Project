@@ -16,6 +16,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
     private lateinit var expandableListView: ExpandableListView
+    private val eventList = EventList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +69,13 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         this.subCategories[categories[3]] = subCategory4
     }
 
+    fun displayEventList() {
+        val eventListFragment = SubCategoryFragment.newInstance(eventList.getAllEventsSortedByTitle())
+        val eventListFragmentTransaction = supportFragmentManager.beginTransaction()
+        eventListFragmentTransaction.replace(R.id.relativeLayout, eventListFragment)
+        eventListFragmentTransaction.commit()
+    }
+
     override fun onChildClick(
         parent: ExpandableListView?,
         v: View?,
@@ -76,9 +84,10 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         id: Long
     ): Boolean {
 
-        val intent = Intent(this, SubCategoryActivity::class.java)
-        intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
-        this.startActivity(intent)
+        //val intent = Intent(this, SubCategoryActivity::class.java)
+        //intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
+        //this.startActivity(intent)
+        displayEventList()
 
         return false
     }
