@@ -1,5 +1,6 @@
 package com.ismin.projectapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     private var events: ArrayList<Event> = arrayListOf()
     private lateinit var recyclerViewEvents: RecyclerView
     private lateinit var eventAdapter: EventAdapter
+    private lateinit var listener: MyActivityCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +48,18 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     override fun onItemClick(position: Int) {
         Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show()
         val clickedEvent: Event = events[position]
-        //val intent = Intent(this, EventActivity::class.java)
-        //intent.putExtra(Intent.EXTRA_TEXT, item)
-        //this.startActivity(intent)
+        //listener.goToEvent(clickedEvent)
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MyActivityCallback) {
+            listener = context
+        } else {
+            throw RuntimeException("$context must implement MyActivityCallback")
+        }
+    }
+
 
     companion object {
         @JvmStatic

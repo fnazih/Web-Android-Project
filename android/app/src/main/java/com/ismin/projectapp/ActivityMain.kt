@@ -11,8 +11,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ExpandableListView
+import kotlinx.android.synthetic.main.activity_main.*
 
-class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener {
+class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, MyActivityCallback {
     //private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
@@ -20,7 +21,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     private val eventList = EventList()
     private val favorites = EventList()
     private var fragment: SubCategoryFragment = SubCategoryFragment()
-    //private val favoritesButton: Button = findViewById(R.id.favoritesButt)
 
     private val event1: Event = Event("My first event", "03/01/2021")
     private val event2: Event = Event("My second event", "26/10/2021")
@@ -28,8 +28,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //favoritesButton.setOnClickListener { }
 
         eventList.addEvent(event1)
         eventList.addEvent(event2)
@@ -91,7 +89,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         eventListFragmentTransaction.replace(R.id.relativeLayout, fragment)
         eventListFragmentTransaction.commit()
 
-        //favoritesButton.visibility = View.VISIBLE
+        favoritesButt.visibility = View.VISIBLE
     }
 
     fun goToFavorites(view: View) {
@@ -105,7 +103,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         favoritesListFragmentTransaction.replace(R.id.relativeLayout, fragment)
         favoritesListFragmentTransaction.commit()
 
-        //favoritesButton.visibility = View.GONE
+        favoritesButt.visibility = View.GONE
     }
 
     override fun onChildClick(
@@ -118,5 +116,11 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         displayEventList()
 
         return false
+    }
+
+    override fun goToEvent(event: Event) {
+        val intent = Intent(this, EventActivity::class.java)
+        intent.putExtra("MyEvent", event)
+        this.startActivity(intent)
     }
 }

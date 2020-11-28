@@ -3,9 +3,7 @@ package com.ismin.projectapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
-import org.w3c.dom.Text
 
 class EventActivity : AppCompatActivity() {
     private var eventTitleView: TextView= findViewById(R.id.eventTitleView)
@@ -20,6 +18,7 @@ class EventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
-        val displayedEvent = intent.getStringExtra(Intent.EXTRA_TEXT)
+        //val displayedEvent = intent.getSerializableExtra("MyEvent")
+        //eventDescriptionView.text = displayedEvent.toString()
     }
 }
