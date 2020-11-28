@@ -1,17 +1,19 @@
 package com.ismin.projectapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-private const val ARG_EVENTS = "events"
+private const val ARG_EVENTS = "ARG_EVENTS"
 
-class SubCategoryFragment : Fragment() {
+class SubCategoryFragment : Fragment(), onEventItemClickListener {
     private var events: ArrayList<Event> = arrayListOf()
     private lateinit var recyclerViewEvents: RecyclerView
     private lateinit var eventAdapter: EventAdapter
@@ -30,7 +32,7 @@ class SubCategoryFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sub_category, container, false)
 
         this.recyclerViewEvents = view.findViewById(R.id.recyclerView)
-        eventAdapter = EventAdapter(events)
+        eventAdapter = EventAdapter(events, this)
         this.recyclerViewEvents.adapter = eventAdapter
         val linearLayoutManager = LinearLayoutManager(context)
         this.recyclerViewEvents.layoutManager = linearLayoutManager
@@ -41,12 +43,24 @@ class SubCategoryFragment : Fragment() {
         return view
     }
 
+    override fun onItemClick(position: Int) {
+        Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show()
+        val clickedEvent: Event = events[position]
+        //val intent = Intent(this, EventActivity::class.java)
+        //intent.putExtra(Intent.EXTRA_TEXT, item)
+        //this.startActivity(intent)
+    }
+
     companion object {
-        fun newInstance(newFragment: ArrayList<Event>) =
-            SubCategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable(ARG_EVENTS, newFragment)
-                }
-            }
+        @JvmStatic
+        fun newInstance(eventsToDisplay: ArrayList<Event>): SubCategoryFragment {
+            val bundle = Bundle()
+            bundle.putSerializable(ARG_EVENTS, eventsToDisplay)
+
+            val eventListFragment = SubCategoryFragment()
+
+            eventListFragment.arguments = bundle
+            return eventListFragment
+        }
     }
 }

@@ -5,14 +5,15 @@
     <string name="startButtonText">Commencer</string>
     <string name="appExplanation">Dans cette app, vous aurez accès à une base de données très complète listant un grand nombre d\'activités à faire à Paris.
         Après avoir appuyé sur le bouton "Commencer", pour aurez accès à différentes listes contenant les événements à Paris.</string>
+    <string name="eventTitle">Titre event</string>
     <string name="leadTextString">Phrase descriptive de l\'event</string>
+    <string name="descriptionEvent">Lorem ipsum dolores blablabla ca decrit l\'event blabla texte blabla c\'est long blabla ca grandit Lorem ipsum dolores blablabla ca decrit l\'event blabla texte blabla c\'est long blabla ca grandit</string>
     <string name="addressName">Nom de l\'adresse</string>
     <string name="addressStreet">Rue</string>
     <string name="addressZipCode">Code Postal</string>
     <string name="addressCity">Ville</string>
+    <string name="priceDetails">Details de prix</string>
     <string name="transportIndications">Indications de transports</string>
-    <string name="categories">Decouvrez toutes nos categories d\'evenements !</string>
     <string name="categoryName">Nom categorie</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="FavoritesButton">Favoris</string>
 </resources>

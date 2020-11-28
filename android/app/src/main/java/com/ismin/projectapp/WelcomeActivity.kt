@@ -19,7 +19,6 @@ class WelcomeActivity : AppCompatActivity() {
         val startButton = findViewById<Button>(R.id.buttonStart)
 
         startButton.setOnClickListener {
-            System.out.println("Ca rentre dans setOnClickListener")
             val intent = Intent(this, ActivityMain::class.java)
             this.startActivity(intent)
         }

@@ -10,6 +10,9 @@
     <string name="addressZipCode">ZipCode</string>
     <string name="addressCity">City</string>
     <string name="transportIndications">Transports indications</string>
-    <string name="categories">Discover all of our events categories !</string>
     <string name="categoryName">Category name</string>
+    <string name="FavoritesButton">Favorites</string>
+    <string name="eventTitle">Event title</string>
+    <string name="descriptionEvent">"Lorem ipsum dolores blablabla event description very good okay "</string>
+    <string name="priceDetails">Price details</string>
 </resources>

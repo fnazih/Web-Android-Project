@@ -9,24 +9,39 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ExpandableListView
 
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener {
-    private lateinit var listViewAdapter : ExpendableListViewAdapter
+    //private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
     private lateinit var subCategories: HashMap<String, ArrayList<String>>
-    private lateinit var expandableListView: ExpandableListView
+    //private lateinit var expandableListView: ExpandableListView
     private val eventList = EventList()
+    private val favorites = EventList()
+    private var fragment: SubCategoryFragment = SubCategoryFragment()
+    //private val favoritesButton: Button = findViewById(R.id.favoritesButt)
+
+    private val event1: Event = Event("My first event", "03/01/2021")
+    private val event2: Event = Event("My second event", "26/10/2021")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        updateList()
-        expandableListView = findViewById(R.id.expendableListView)
-        listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
-        expandableListView.setAdapter(listViewAdapter)
-        expandableListView.setOnChildClickListener(this)
+        //favoritesButton.setOnClickListener { }
+
+        eventList.addEvent(event1)
+        eventList.addEvent(event2)
+        favorites.addEvent(event2)
+
+        displayEventList()
+
+        //updateList()
+        //expandableListView = findViewById(R.id.expendableListView)
+        //listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
+        //expandableListView.setAdapter(listViewAdapter)
+        //expandableListView.setOnChildClickListener(this)
     }
 
     private fun updateList() {      //fct a adapter qd on aura la bdd
@@ -69,11 +84,28 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         this.subCategories[categories[3]] = subCategory4
     }
 
-    fun displayEventList() {
-        val eventListFragment = SubCategoryFragment.newInstance(eventList.getAllEventsSortedByTitle())
+    private fun displayEventList() {
         val eventListFragmentTransaction = supportFragmentManager.beginTransaction()
-        eventListFragmentTransaction.replace(R.id.relativeLayout, eventListFragment)
+        fragment = SubCategoryFragment.newInstance(this.eventList.getAllEventsSortedByTitle())
+
+        eventListFragmentTransaction.replace(R.id.relativeLayout, fragment)
         eventListFragmentTransaction.commit()
+
+        //favoritesButton.visibility = View.VISIBLE
+    }
+
+    fun goToFavorites(view: View) {
+        displayFavorites()
+    }
+
+    private fun displayFavorites() {
+        val favoritesListFragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment = SubCategoryFragment.newInstance(this.favorites.getAllEventsSortedByTitle())
+
+        favoritesListFragmentTransaction.replace(R.id.relativeLayout, fragment)
+        favoritesListFragmentTransaction.commit()
+
+        //favoritesButton.visibility = View.GONE
     }
 
     override fun onChildClick(
@@ -83,10 +115,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         childPosition: Int,
         id: Long
     ): Boolean {
-
-        //val intent = Intent(this, SubCategoryActivity::class.java)
-        //intent.putExtra(Intent.EXTRA_TEXT, listViewAdapter.getChild(groupPosition, childPosition).toString())
-        //this.startActivity(intent)
         displayEventList()
 
         return false
