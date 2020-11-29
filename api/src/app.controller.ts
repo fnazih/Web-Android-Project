@@ -1,7 +1,7 @@
-/*
-  @authors : Valentin POLLART - Fatima-Zohra NAZIH
-  @title :
- */
+/**
+  *@authors : Valentin POLLART - Fatima-Zohra NAZIH
+  *@title : Events in Paris
+ **/
 
 import {Body, Controller, Get, Param, Put} from '@nestjs/common';
 import { AppService } from './app.service';

@@ -1,3 +1,8 @@
+/**
+ *@authors : Valentin POLLART - Fatima-Zohra NAZIH
+ *@title : Events in Paris
+ **/
+
 import {Evenement} from "./Evenement";
 
 export class EventDTO implements Evenement{

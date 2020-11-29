@@ -1,7 +1,7 @@
-/*
-  @authors : Valentin POLLART - Fatima-Zohra NAZIH
-  @title :
- */
+/**
+ *@authors : Valentin POLLART - Fatima-Zohra NAZIH
+ *@title : Events in Paris
+ **/
 
 import {Injectable} from '@nestjs/common';
 import {EventSummary} from "./models/EventSummary";

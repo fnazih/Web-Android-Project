@@ -1,7 +1,7 @@
-/*
-  @authors : Valentin POLLART - Fatima-Zohra NAZIH
-  @title :
- */
+/**
+ *@authors : Valentin POLLART - Fatima-Zohra NAZIH
+ *@title : Events in Paris
+ **/
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
