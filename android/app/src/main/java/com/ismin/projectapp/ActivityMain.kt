@@ -9,10 +9,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+const val EVENTS_URL = "https://events-in-paris.cleverapps.io"
+
 
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, MyActivityCallback {
     //private lateinit var listViewAdapter : ExpendableListViewAdapter
@@ -22,19 +29,34 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     private val eventList = EventList()
     private val favorites = EventList()
     private var fragment: SubCategoryFragment = SubCategoryFragment()
-
-    private val event1: Event = Event("My first event", "03/01/2021")
-    private val event2: Event = Event("My second event", "26/10/2021")
+    private lateinit var eventService: EventService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        eventList.addEvent(event1)
-        eventList.addEvent(event2)
-        favorites.addEvent(event2)
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(EVENTS_URL)
+            .build()
 
-        displayEventList()
+        eventService = retrofit.create<EventService>(EventService::class.java)
+
+        eventService.getAllEventsSortedByTitle().enqueue(object : Callback<ArrayList<Event>> {
+            override fun onResponse(
+                call: Call<ArrayList<Event>>,
+                response: Response<ArrayList<Event>>
+            ) {
+                val allBooks = response.body()
+                allBooks?.forEach {
+                    eventList.addEvent(it)
+                }
+                displayEventList()
+            }
+            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+            }
+        })
 
         //updateList()
         //expandableListView = findViewById(R.id.expendableListView)
@@ -120,8 +142,18 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     }
 
     override fun goToEvent(event: Event) {
-        val newIntent = Intent(this, EventActivity::class.java)
-        //intent.putExtra("MyEvent", event)
-        this.startActivity(newIntent)
+        val intent = Intent(this, EventActivity::class.java)
+//        intent.putExtra("img_url", event.img_url)
+//        intent.putExtra("title", event.title)
+//        intent.putExtra("date_start", event.date_start)
+//        intent.putExtra("date_end", event.date_end)
+//        intent.putExtra("leadText", event.lead_text)
+//        intent.putExtra("description", event.description)
+//        intent.putExtra("addressName", event.address_name)
+//        intent.putExtra("addressStreet", event.address_street)
+//        intent.putExtra("addressZipCode", event.address_zipcode)
+//        intent.putExtra("addressCity", event.address_city)
+//        intent.putExtra("transport_indic", event.transport_indications)
+        this.startActivity(intent)
     }
 }

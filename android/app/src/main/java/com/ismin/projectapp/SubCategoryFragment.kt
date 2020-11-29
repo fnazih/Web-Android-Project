@@ -1,7 +1,11 @@
+/**
+ * @authors : Valentin POLLART - Fatima-Zohra NAZIH
+ * @title : Events in Paris
+ */
+
 package com.ismin.projectapp
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

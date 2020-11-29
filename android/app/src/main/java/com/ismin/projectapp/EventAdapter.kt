@@ -8,8 +8,10 @@ package com.ismin.projectapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class EventAdapter(private val events: ArrayList<Event>, private val listener: onEventItemClickListener): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
@@ -31,11 +33,12 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
     inner class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var eventTitle: TextView
         var eventDate: TextView
+        var eventIcon: ImageView
 
         init {
             itemView.setOnClickListener(this)
             this.eventTitle = itemView.findViewById(R.id.eventTitleRow)
-            //this.eventIcon = itemView.findViewById(R.id.eventIcon)
+            this.eventIcon = itemView.findViewById(R.id.eventIconView)
             this.eventDate = itemView.findViewById(R.id.eventDateListView)
         }
 
@@ -48,10 +51,16 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val (title, date) = this.events[position]
+        val (id, title, img_url,
+            category, lead_text, programs,
+            description, date_start, date_end, contact_name,
+            contact_phone, contact_mail, address_name,
+            address_street, address_zipcode, address_city,
+            transport_indications, cover_alt, price_type,
+            price_detail, access_link, tags) = this.events[position]
 
         holder.eventTitle.text = title
-        //holder.eventIcon.setImageResource(img_url.toInt())
-        holder.eventDate.text = date
+        Picasso.get().load(img_url).into(holder.eventIcon)
+        holder.eventDate.text = date_start
     }
 }

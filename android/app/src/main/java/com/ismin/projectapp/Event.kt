@@ -7,10 +7,6 @@ package com.ismin.projectapp
 
 import java.io.Serializable
 
-data class Event (val title: String,
-                  val date_start: String): Serializable
-
-/*
 data class Event(val id: String,
                  val title: String,
                  val img_url: String,
@@ -33,4 +29,3 @@ data class Event(val id: String,
                  val price_detail: String,
                  val access_link: String,
                  val tags: String): Serializable
- */

@@ -27,5 +27,4 @@ class EventList {
     fun getTotalNumberOfEvents(): Int {
         return this.storage.size
     }
-
 }
