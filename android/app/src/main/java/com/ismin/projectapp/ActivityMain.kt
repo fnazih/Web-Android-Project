@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ExpandableListView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, MyActivityCallback {
@@ -119,8 +120,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     }
 
     override fun goToEvent(event: Event) {
-        val intent = Intent(this, EventActivity::class.java)
-        intent.putExtra("MyEvent", event)
-        this.startActivity(intent)
+        val newIntent = Intent(this, EventActivity::class.java)
+        //intent.putExtra("MyEvent", event)
+        this.startActivity(newIntent)
     }
 }

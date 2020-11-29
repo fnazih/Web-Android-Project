@@ -48,7 +48,7 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     override fun onItemClick(position: Int) {
         Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show()
         val clickedEvent: Event = events[position]
-        //listener.goToEvent(clickedEvent)
+        listener.goToEvent(clickedEvent)
     }
 
     override fun onAttach(context: Context) {
@@ -59,7 +59,6 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
             throw RuntimeException("$context must implement MyActivityCallback")
         }
     }
-
 
     companion object {
         @JvmStatic
