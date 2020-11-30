@@ -144,6 +144,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         val intent = Intent(this, EventActivity::class.java)
         val pickedEvent = event.id
         intent.putExtra("pickedEvent", pickedEvent)
+        System.out.println(pickedEvent)
         this.startActivity(intent)
     }
 }

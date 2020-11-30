@@ -18,8 +18,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class EventActivity : AppCompatActivity() {
-    private lateinit var displayedEvent: Event
-
     private lateinit var eventImageView: ImageView
     private lateinit var eventTitleView: TextView
     private lateinit var eventLeadTextView: TextView
@@ -50,6 +48,9 @@ class EventActivity : AppCompatActivity() {
         transportIndicationsView = findViewById(R.id.transportIndicationsView)
 
         val displayedEventID = intent.getStringExtra("pickedEvent")
+        System.out.println(displayedEventID)
+
+        //var displayedEvent: Event
 
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -63,8 +64,7 @@ class EventActivity : AppCompatActivity() {
                 call: Call<Event>,
                 response: Response<Event>
             ) {
-                val event = response.body()
-                displayedEvent = event!!
+                val displayedEvent = response.body()
             }
 
             override fun onFailure(call: Call<Event>, t: Throwable) {
@@ -72,14 +72,17 @@ class EventActivity : AppCompatActivity() {
             }
         })
 
-        init_page(displayedEvent)
+        //init_page(displayedEvent)
     }
 
     fun init_page(event: Event) {
         //Picasso.get().load(intent.getStringExtra("img_url")).into(eventImageView)
         eventTitleView.text = event.title
+        System.out.println(event.id)
         eventDateStartView.text = event.date_start
+        System.out.println(event.date_start)
         eventDateEndView.text = event.date_end
+        System.out.println(event.date_end)
         eventLeadTextView.text = event.lead_text
         eventDescriptionView.text = event.description
         addressNameView.text = event.address_name
