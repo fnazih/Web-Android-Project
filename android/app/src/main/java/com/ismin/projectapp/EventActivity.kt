@@ -9,9 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class EventActivity : AppCompatActivity() {
+    private lateinit var displayedEvent: Event
+
     private lateinit var eventImageView: ImageView
     private lateinit var eventTitleView: TextView
     private lateinit var eventLeadTextView: TextView
@@ -23,6 +31,7 @@ class EventActivity : AppCompatActivity() {
     private lateinit var addressZipCodeView: TextView
     private lateinit var addressCityView: TextView
     private lateinit var transportIndicationsView: TextView
+    private lateinit var eventsService: EventService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,25 +42,50 @@ class EventActivity : AppCompatActivity() {
         eventLeadTextView = findViewById(R.id.eventLeadTextView)
         eventDescriptionView = findViewById(R.id.eventDescriptionView)
         eventDateStartView = findViewById(R.id.dateStartView)
+        eventDateEndView = findViewById(R.id.dateEndView)
         addressNameView = findViewById(R.id.addressNameView)
         addressStreetView = findViewById(R.id.addressStreetView)
         addressZipCodeView = findViewById(R.id.addressZipCodeView)
         addressCityView = findViewById(R.id.addressCityView)
+        transportIndicationsView = findViewById(R.id.transportIndicationsView)
 
-        init_page()
+        val displayedEventID = intent.getStringExtra("pickedEvent")
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(EVENTS_URL)
+            .build()
+
+        eventsService = retrofit.create<EventService>(EventService::class.java)
+
+        eventsService.getEvent(displayedEventID!!).enqueue(object : Callback<Event> {
+            override fun onResponse(
+                call: Call<Event>,
+                response: Response<Event>
+            ) {
+                val event = response.body()
+                displayedEvent = event!!
+            }
+
+            override fun onFailure(call: Call<Event>, t: Throwable) {
+                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+            }
+        })
+
+        init_page(displayedEvent)
     }
 
-    fun init_page() {
+    fun init_page(event: Event) {
         //Picasso.get().load(intent.getStringExtra("img_url")).into(eventImageView)
-        eventTitleView.text = intent.getStringExtra("title")
-        eventDateStartView.text = intent.getStringExtra("date_start")
-        eventDateEndView.text = intent.getStringExtra("date_end")
-        eventLeadTextView.text = intent.getStringExtra("leadText")
-        eventDescriptionView.text = intent.getStringExtra("description")
-        addressNameView.text = intent.getStringExtra("addressName")
-        addressStreetView.text = intent.getStringExtra("addressStreet")
-        addressZipCodeView.text = intent.getStringExtra("addressZipCode")
-        addressCityView.text = intent.getStringExtra("addressCity")
-        transportIndicationsView.text = intent.getStringExtra("transport_indic")
+        eventTitleView.text = event.title
+        eventDateStartView.text = event.date_start
+        eventDateEndView.text = event.date_end
+        eventLeadTextView.text = event.lead_text
+        eventDescriptionView.text = event.description
+        addressNameView.text = event.address_name
+        addressStreetView.text = event.address_street
+        addressZipCodeView.text = event.address_zipcode
+        addressCityView.text = event.address_city
+        transportIndicationsView.text = event.transport_indications
     }
 }

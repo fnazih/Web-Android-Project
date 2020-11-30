@@ -20,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val EVENTS_URL = "https://events-in-paris.cleverapps.io"
 
-
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, MyActivityCallback {
     //private lateinit var listViewAdapter : ExpendableListViewAdapter
     private lateinit var categories: ArrayList<String>
@@ -143,17 +142,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun goToEvent(event: Event) {
         val intent = Intent(this, EventActivity::class.java)
-//        intent.putExtra("img_url", event.img_url)
-//        intent.putExtra("title", event.title)
-//        intent.putExtra("date_start", event.date_start)
-//        intent.putExtra("date_end", event.date_end)
-//        intent.putExtra("leadText", event.lead_text)
-//        intent.putExtra("description", event.description)
-//        intent.putExtra("addressName", event.address_name)
-//        intent.putExtra("addressStreet", event.address_street)
-//        intent.putExtra("addressZipCode", event.address_zipcode)
-//        intent.putExtra("addressCity", event.address_city)
-//        intent.putExtra("transport_indic", event.transport_indications)
+        val pickedEvent = event.id
+        intent.putExtra("pickedEvent", pickedEvent)
         this.startActivity(intent)
     }
 }
