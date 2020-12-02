@@ -8,7 +8,7 @@ import {Evenement} from "./Evenement";
 export class EventDTO implements Evenement{
     id: string;
     title: string;
-    img_url: string;
+    cover_url: string;
     category: string;
     lead_text: string;
     programs: string;

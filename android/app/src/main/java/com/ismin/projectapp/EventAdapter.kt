@@ -51,10 +51,10 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val ( title, cover_url, date_start) = this.events[position]
+        val currentEvent = this.events[position]
 
-        holder.eventTitle.text = title
-        Picasso.get().load(cover_url).into(holder.eventIcon)
-        holder.eventDate.text = date_start
+        holder.eventTitle.text = currentEvent.title
+        Picasso.get().load(currentEvent.cover_url).into(holder.eventIcon)
+        holder.eventDate.text = currentEvent.date_start
     }
 }

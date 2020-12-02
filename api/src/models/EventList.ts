@@ -11,7 +11,11 @@ export class EventList {
       item.fields.id = item.recordid
       return item.fields
     })
-
+    let selected = this.eventList[0].category;
+    this.eventList = this.eventList.filter(item => {
+      item.category === selected;
+      console.log(item.lead_text)
+    })
   }
 
   static addEvent(event: EventDTO) {
@@ -26,7 +30,10 @@ export class EventList {
   }
 
   static getAllEvents(): EventDTO[] | undefined {
-    let num = 0;
+    this.eventList.forEach(element => {
+      element.description = null;
+      element.transport_indications = null;
+    })
     return this.eventList;
   }
 
