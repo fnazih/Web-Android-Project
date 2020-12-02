@@ -145,10 +145,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     override fun goToEvent(event: Event) {
         val intent = Intent(this, EventActivity::class.java)
         val pickedEventID = event.id
-        System.out.println(event.id)
-        System.out.println(event.title)
-        System.out.println(event.cover_url)
-        intent.putExtra("pickedEventID", pickedEventID)
+        intent.putExtra("Event", event)
+//        intent.putExtra("pickedEventID", pickedEventID)
         this.startActivity(intent)
     }
 

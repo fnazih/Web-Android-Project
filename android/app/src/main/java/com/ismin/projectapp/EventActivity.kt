@@ -18,7 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class EventActivity : AppCompatActivity() {
-    private lateinit var allEvents: EventList
+    //private lateinit var allEvents: EventList
     private lateinit var displayedEvent: Event
     private lateinit var eventImageView: ImageView
     private lateinit var eventTitleView: TextView
@@ -49,38 +49,33 @@ class EventActivity : AppCompatActivity() {
         addressCityView = findViewById(R.id.addressCityView)
         //transportIndicationsView = findViewById(R.id.transportIndicationsView)
 
-//        var all: ArrayList<Event> = intent.getParcelableArrayExtra("Events")!! as ArrayList<Event>
-//
-//        all.forEach {
-//            allEvents.addEvent(it)
-//        }
-
         val displayedEventID = intent.getStringExtra("pickedEventID")
+        displayedEvent = intent.getSerializableExtra("Event") as Event
 
 //        val events = intent.getParcelableArrayExtra("Events")
 //        events!!.forEach {
 //            allEvents.addEvent(it as Event)
 //        }
 
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(EVENTS_URL)
-            .build()
-
-        eventsService = retrofit.create<EventService>(EventService::class.java)
-
-        eventsService.getEvent(displayedEventID!!).enqueue(object : Callback<Event> {
-            override fun onResponse(
-                call: Call<Event>,
-                response: Response<Event>
-            ) {
-                val all = response.body()
-                displayedEvent = all!!
-            }
-            override fun onFailure(call: Call<Event>, t: Throwable) {
-                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
-            }
-        })
+//        val retrofit = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(EVENTS_URL)
+//            .build()
+//
+//        eventsService = retrofit.create<EventService>(EventService::class.java)
+//
+//        eventsService.getEvent(displayedEventID!!).enqueue(object : Callback<Event> {
+//            override fun onResponse(
+//                call: Call<Event>,
+//                response: Response<Event>
+//            ) {
+//                val all = response.body()
+//                displayedEvent = all!!
+//            }
+//            override fun onFailure(call: Call<Event>, t: Throwable) {
+//                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+//            }
+//        })
 
         init_page(displayedEvent)
     }
