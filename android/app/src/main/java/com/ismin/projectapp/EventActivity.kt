@@ -16,7 +16,7 @@ class EventActivity : AppCompatActivity() {
     private lateinit var eventImageView: ImageView
     private lateinit var eventTitleView: TextView
     private lateinit var eventLeadTextView: TextView
-    //private lateinit var eventDescriptionView: TextView
+    private lateinit var eventDescriptionView: TextView
     private lateinit var eventDateStartView: TextView
     private lateinit var eventDateEndView: TextView
     private lateinit var addressNameView: TextView
@@ -32,7 +32,7 @@ class EventActivity : AppCompatActivity() {
         eventImageView = findViewById(R.id.eventImageView)
         eventTitleView = findViewById(R.id.eventTitleView)
         eventLeadTextView = findViewById(R.id.eventLeadTextView)
-        //eventDescriptionView = findViewById(R.id.eventDescriptionView)
+        eventDescriptionView = findViewById(R.id.eventDescriptionView)
         eventDateStartView = findViewById(R.id.dateStartView)
         eventDateEndView = findViewById(R.id.dateEndView)
         addressNameView = findViewById(R.id.addressNameView)
@@ -51,7 +51,7 @@ class EventActivity : AppCompatActivity() {
         eventDateStartView.text = event.date_start
         eventDateEndView.text = event.date_end
         eventLeadTextView.text = event.lead_text
-        //eventDescriptionView.text = event.description
+        eventDescriptionView.text = event.description
         addressNameView.text = event.address_name
         addressStreetView.text = event.address_street
         addressZipCodeView.text = event.address_zipcode

@@ -6,12 +6,14 @@
 package com.ismin.projectapp
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -149,9 +151,9 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         this.startActivity(intent)
     }
 
-    fun addToFavorites(event: Event) {
-        var ATFB: Button = findViewById(R.id.addToFavButton)
-        ATFB.background = resources.getDrawable(R.drawable.filledstar)
+    override fun addToFavorites(position: Int) {
+        val event = eventList.getAllEventsSortedByTitle()[position]
+        eventList.getAllEventsSortedByTitle()[position].fav = true
         favorites.addEvent(event)
     }
 }

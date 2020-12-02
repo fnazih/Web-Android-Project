@@ -1,173 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
-    tools:context=".EventActivity"
-    android:isScrollContainer="true">
+    tools:context=".EventActivity">
 
-    <TextView
-        android:id="@+id/eventTitleView"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginBottom="404dp"
-        android:text="@string/eventTitle"
-        android:textSize="36dp"
-        android:textColor="@color/vividRed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventImageView"
-        app:layout_constraintVertical_bias="0.866" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/eventLeadTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/leadTextString"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventTitleView"
-        app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/eventImageView"
+            android:layout_width="414dp"
+            android:layout_height="278dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <TextView
-        android:id="@+id/eventDescriptionView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:text="@string/descriptionEvent"
-        android:textColor="@color/darkRoyalBlue"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventLeadTextView"
-        app:layout_constraintVertical_bias="0.161" />
+        <TextView
+            android:id="@+id/eventTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/eventTitle"
+            android:textColor="@color/vividRed"
+            android:textSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventImageView"
+            app:layout_constraintVertical_bias="0.866" />
 
-    <ImageView
-        android:id="@+id/eventImageView"
-        android:layout_width="414dp"
-        android:layout_height="278dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        <TextView
+            android:id="@+id/eventLeadTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="@string/leadTextString"
+            android:layout_marginBottom="20dp"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventTitleView"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/addressNameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addressName"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
-        app:layout_constraintVertical_bias="0.131" />
+        <TextView
+            android:id="@+id/eventDescriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="@string/descriptionEvent"
+            android:textColor="@color/darkRoyalBlue"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventLeadTextView"
+            app:layout_constraintVertical_bias="0.161" />
 
-    <TextView
-        android:id="@+id/dateStartView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:text="Date debut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toEndOf="@id/addressNameView"
-        app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
-        app:layout_constraintVertical_bias="0.129" />
+        <TextView
+            android:id="@+id/dateStartView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="Date debut"
+            android:textSize="12dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toEndOf="@id/addressNameView"
+            app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
+            app:layout_constraintVertical_bias="0.129" />
 
-    <TextView
-        android:id="@+id/dateEndView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="Date fin"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.408"
-        app:layout_constraintStart_toEndOf="@id/dateStartView"
-        app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
-        app:layout_constraintVertical_bias="0.005" />
+        <TextView
+            android:id="@+id/dateEndView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="Date fin"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.448"
+            app:layout_constraintStart_toEndOf="@id/dateStartView"
+            app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
+            app:layout_constraintVertical_bias="0.034" />
 
-    <TextView
-        android:id="@+id/addressStreetView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addressStreet"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressNameView"
-        app:layout_constraintVertical_bias="0.061" />
+        <TextView
+            android:id="@+id/addressNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginRight="80dp"
+            android:text="@string/addressName"
+            android:textSize="12dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDescriptionView"
+            app:layout_constraintVertical_bias="0.131" />
 
-    <TextView
-        android:id="@+id/addressZipCodeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addressZipCode"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addressStreetView"
-        app:layout_constraintVertical_bias="0.067" />
+        <TextView
+            android:id="@+id/addressStreetView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="@string/addressStreet"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressNameView"
+            app:layout_constraintVertical_bias="0.061" />
 
-    <TextView
-        android:id="@+id/addressCityView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addressCity"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toEndOf="@id/addressZipCodeView"
-        app:layout_constraintTop_toBottomOf="@+id/addressNameView"
-        app:layout_constraintVertical_bias="0.239" />
+        <TextView
+            android:id="@+id/addressZipCodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="@string/addressZipCode"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addressStreetView"
+            app:layout_constraintVertical_bias="0.067" />
 
-    <TextView
-        android:id="@+id/priceDetailsView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/priceDetails"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressZipCodeView"
-        app:layout_constraintVertical_bias="0.266" />
+        <TextView
+            android:id="@+id/addressCityView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="@string/addressCity"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toEndOf="@id/addressZipCodeView"
+            app:layout_constraintTop_toBottomOf="@+id/addressNameView"
+            app:layout_constraintVertical_bias="0.195"
+            android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:id="@+id/transportIndicationsView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/transportIndications"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceDetailsView"
-        app:layout_constraintVertical_bias="0.413" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

@@ -7,4 +7,6 @@ package com.ismin.projectapp
 
 interface onEventItemClickListener {
     fun onItemClick(position: Int)
+
+    fun onFavButtonClick(position: Int)
 }

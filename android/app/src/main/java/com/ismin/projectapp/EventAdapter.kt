@@ -8,12 +8,14 @@ package com.ismin.projectapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class EventAdapter(private val events: ArrayList<Event>, private val listener: onEventItemClickListener): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+    private lateinit var favButt: Button
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.event_row_layout, parent, false)
@@ -24,7 +26,6 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         return this.events.size
     }
 
-
     fun refreshData(updatedEvents: java.util.ArrayList<Event>) {
         events.clear()
         events.addAll(updatedEvents)
@@ -34,12 +35,17 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         var eventTitle: TextView
         var eventDate: TextView
         var eventIcon: ImageView
+        var favButton: Button
 
         init {
             itemView.setOnClickListener(this)
             this.eventTitle = itemView.findViewById(R.id.eventTitleRow)
             this.eventIcon = itemView.findViewById(R.id.eventIconView)
             this.eventDate = itemView.findViewById(R.id.eventDateListView)
+            this.favButton = itemView.findViewById(R.id.addToFavButton)
+            favButton.setOnClickListener {
+                listener.onFavButtonClick(this.adapterPosition)
+            }
         }
 
         override fun onClick(v: View?) {
