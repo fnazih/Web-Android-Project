@@ -16,6 +16,10 @@ class EventList {
         return this.storage.find{it.title == title}
     }
 
+    fun getEventByID(id: String): Event? {
+        return this.storage.find { it.id == id }
+    }
+
     fun getAllEventsSortedByTitle(): ArrayList<Event> {
         return ArrayList(this.storage.sortedBy { it.title })
     }

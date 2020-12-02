@@ -27,7 +27,7 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            events = arguments!!.getSerializable(ARG_EVENTS) as ArrayList<Event>
+            events = arguments!!.getParcelableArrayList<Event>(ARG_EVENTS) as ArrayList<Event>
         }
     }
 

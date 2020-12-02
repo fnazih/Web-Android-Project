@@ -5,8 +5,11 @@
 
 package com.ismin.projectapp
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
+@Parcelize
 data class Event(val id: String,
                  val title: String,
                  val img_url: String,
@@ -28,4 +31,4 @@ data class Event(val id: String,
                  val price_type: String,
                  val price_detail: String,
                  val access_link: String,
-                 val tags: String): Serializable
+                 val tags: String): Serializable, Parcelable

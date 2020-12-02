@@ -46,8 +46,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
                 call: Call<ArrayList<Event>>,
                 response: Response<ArrayList<Event>>
             ) {
-                val allBooks = response.body()
-                allBooks?.forEach {
+                val allEvents = response.body()
+                allEvents?.forEach {
                     eventList.addEvent(it)
                 }
                 displayEventList()
@@ -142,9 +142,14 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun goToEvent(event: Event) {
         val intent = Intent(this, EventActivity::class.java)
-        val pickedEvent = event.id
-        intent.putExtra("pickedEvent", pickedEvent)
-        System.out.println(pickedEvent)
+//        intent.putParcelableArrayListExtra("Events", eventList.getAllEventsSortedByTitle())
+//        val pickedEventID = event.id
+//        intent.putExtra("pickedEventID", pickedEventID)
+//        System.out.println(pickedEventID)
         this.startActivity(intent)
+    }
+
+    fun addToFavorites(event: Event) {
+        favorites.addEvent(event)
     }
 }

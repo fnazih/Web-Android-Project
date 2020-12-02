@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="darkRoyalBlue">#175676</color>
-    <color name="vividRed">#D62839</color>
-    <color name="rosyPink">#BA324F</color>
-    <color name="lightBlue">#CCE6F4</color>
-    <color name="cyan">#4BA3C3</color>
+    <color name="darkRoyalBlue">#1D3557</color>
+    <color name="vividRed">#E63946</color>
+    <color name="rosyPink">#457B9D</color>
+    <color name="lightBlue">#F1FAEE</color>
+    <color name="cyan">#A8DADC</color>
 </resources>
