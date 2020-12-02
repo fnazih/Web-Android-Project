@@ -51,13 +51,7 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val (id, title, cover_url,
-            category, lead_text, programs,
-            description, date_start, date_end, contact_name,
-            contact_phone, contact_mail, address_name,
-            address_street, address_zipcode, address_city,
-            transport_indications, cover_alt, price_type,
-            price_detail, access_link, tags) = this.events[position]
+        val ( title, cover_url, date_start) = this.events[position]
 
         holder.eventTitle.text = title
         Picasso.get().load(cover_url).into(holder.eventIcon)

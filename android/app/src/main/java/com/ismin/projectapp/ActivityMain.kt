@@ -57,6 +57,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
             }
         })
 
+        System.out.println(eventList.getEvent("ARIOL'S SHOW"))
+
         //updateList()
         //expandableListView = findViewById(R.id.expendableListView)
         //listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
@@ -142,7 +144,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun goToEvent(event: Event) {
         val intent = Intent(this, EventActivity::class.java)
-        intent.putParcelableArrayListExtra("Events", eventList.getAllEventsSortedByTitle())
         val pickedEventID = event.id
         System.out.println(event.id)
         System.out.println(event.title)
