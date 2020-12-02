@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +30,7 @@ class EventActivity : AppCompatActivity() {
     private lateinit var addressZipCodeView: TextView
     private lateinit var addressCityView: TextView
     //private lateinit var transportIndicationsView: TextView
-    private lateinit var eventsService: EventService
+    //private lateinit var eventsService: EventService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,16 +48,47 @@ class EventActivity : AppCompatActivity() {
         addressCityView = findViewById(R.id.addressCityView)
         //transportIndicationsView = findViewById(R.id.transportIndicationsView)
 
-//        val displayedEventID = intent.getStringExtra("pickedEventID")
+        var all: ArrayList<Event> = intent.getParcelableArrayExtra("Events")!! as ArrayList<Event>
+
+        all.forEach {
+            allEvents.addEvent(it)
+        }
+
+        val displayedEventID = intent.getStringExtra("pickedEventID")
+
 //        val events = intent.getParcelableArrayExtra("Events")
 //        events!!.forEach {
 //            allEvents.addEvent(it as Event)
 //        }
-//        System.out.println(displayedEventID)
+
+//        val retrofit = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(EVENTS_URL)
+//            .build()
 //
-//        displayedEvent = allEvents.getEventByID(displayedEventID!!)!!
+//        eventsService = retrofit.create<EventService>(EventService::class.java)
 //
-//        init_page(displayedEvent)
+//        eventsService.getAllEventsSortedByTitle().enqueue(object : Callback<ArrayList<Event>> {
+//            override fun onResponse(
+//                call: Call<ArrayList<Event>>,
+//                response: Response<ArrayList<Event>>
+//            ) {
+//                val all = response.body()
+//                all?.forEach {
+//                    allEvents.addEvent(it)
+//                }
+//            }
+//            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+//                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+//            }
+//        })
+
+        displayedEvent = allEvents.getEventByID(displayedEventID!!)!!
+        System.out.println(displayedEvent.id)
+        System.out.println(displayedEvent.title)
+        System.out.println(displayedEvent.date_start)
+
+        init_page(displayedEvent)
     }
 
     fun init_page(event: Event) {
