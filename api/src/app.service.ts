@@ -14,8 +14,12 @@ needed for the treatment of the data
 */
 @Injectable()
 export class AppService {
-  async list(): Promise<EventSummary[]> {
-    return EventList.getAllEvents().map((item) => new EventSummary(item.id, item.title, item.cover_url, item.date_start,item.category, item.fav))
+  // async list(): Promise<EventSummary[]> {
+  //   return EventList.getAllEvents().map((item) => new EventSummary(item.id, item.title, item.cover_url, item.date_start,item.category, item.fav))
+  // }
+
+  async list(): Promise<EventDTO[]> {
+    return EventList.getAllEvents()
   }
 
   async get(id: string): Promise<EventDTO> {

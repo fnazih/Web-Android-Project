@@ -15,7 +15,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  async list(): Promise<EventSummary[]> {
+  async list(): Promise<EventDTO[]> {
     return await this.appService.list()
   }
 

@@ -30,10 +30,6 @@ export class EventList {
   }
 
   static getAllEvents(): EventDTO[] | undefined {
-    this.eventList.forEach(element => {
-      element.description = null;
-      element.transport_indications = null;
-    })
     return this.eventList;
   }
 
