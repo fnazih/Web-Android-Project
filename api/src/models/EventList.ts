@@ -13,8 +13,7 @@ export class EventList {
     })
     let selected = this.eventList[0].category;
     this.eventList = this.eventList.filter(item => {
-      item.category === selected;
-      console.log(item.lead_text)
+      return item.category === selected;
     })
   }
 
