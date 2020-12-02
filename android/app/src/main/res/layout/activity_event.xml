@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
-    tools:context=".EventActivity">
+    tools:context=".EventActivity"
+    android:isScrollContainer="true">
 
     <TextView
         android:id="@+id/eventTitleView"
@@ -168,4 +169,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceDetailsView"
         app:layout_constraintVertical_bias="0.413" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

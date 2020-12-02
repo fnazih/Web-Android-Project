@@ -9,6 +9,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -144,13 +145,13 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun goToEvent(event: Event) {
         val intent = Intent(this, EventActivity::class.java)
-        val pickedEventID = event.id
         intent.putExtra("Event", event)
-//        intent.putExtra("pickedEventID", pickedEventID)
         this.startActivity(intent)
     }
 
     fun addToFavorites(event: Event) {
+        var ATFB: Button = findViewById(R.id.addToFavButton)
+        ATFB.background = resources.getDrawable(R.drawable.filledstar)
         favorites.addEvent(event)
     }
 }
