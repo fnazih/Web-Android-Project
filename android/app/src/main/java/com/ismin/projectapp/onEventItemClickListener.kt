@@ -9,4 +9,6 @@ interface onEventItemClickListener {
     fun onItemClick(position: Int)
 
     fun onFavButtonClick(position: Int)
+
+    fun isFav(position: Int): Boolean
 }

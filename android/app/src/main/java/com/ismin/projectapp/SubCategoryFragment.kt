@@ -54,8 +54,9 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     }
 
     override fun onFavButtonClick(position: Int) {
-        listener.addToFavorites(position)
-        //eventAdapter.refreshData(events)
+        listener.toggleFavorite(position)
+        events[position].fav = !events[position].fav
+        eventAdapter.refreshData(events)
     }
 
     override fun onAttach(context: Context) {
@@ -65,6 +66,10 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
         } else {
             throw RuntimeException("$context must implement MyActivityCallback")
         }
+    }
+
+    override fun isFav(position: Int): Boolean{
+        return events[position].fav
     }
 
     companion object {
