@@ -16,5 +16,6 @@
     <string name="transportIndications">Indications de transports</string>
     <string name="categoryName">Nom categorie</string>
     <string name="FavoritesButton">Favoris</string>
+    <string name="FavoritesButtonEvents">Events</string>
     <string name="mainActivityTitle">Choisis ton event !</string>
 </resources>

@@ -16,4 +16,5 @@
     <string name="descriptionEvent">"Lorem ipsum dolores blablabla event description very good okay "</string>
     <string name="priceDetails">Price details</string>
     <string name="mainActivityTitle">Choose your event !</string>
+    <string name="FavoritesButtonEvents">All events</string>
 </resources>
