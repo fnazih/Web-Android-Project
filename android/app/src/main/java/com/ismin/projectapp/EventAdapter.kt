@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -29,13 +30,14 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
     fun refreshData(updatedEvents: java.util.ArrayList<Event>) {
         events.clear()
         events.addAll(updatedEvents)
+        notifyDataSetChanged()
     }
 
     inner class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var eventTitle: TextView
         var eventDate: TextView
         var eventIcon: ImageView
-        var favButton: Button
+        var favButton: ImageButton
 
         init {
             itemView.setOnClickListener(this)
@@ -43,16 +45,28 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
             this.eventIcon = itemView.findViewById(R.id.eventIconView)
             this.eventDate = itemView.findViewById(R.id.eventDateListView)
             this.favButton = itemView.findViewById(R.id.addToFavButton)
-            favButton.setOnClickListener {
-                listener.onFavButtonClick(this.adapterPosition)
-            }
+            favButton.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
-            val position = adapterPosition
-            if(position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
+            when(v) {
+                favButton -> {
+                    if(favButton.background.equals(R.drawable.blankstar)) {
+                        favButton.setImageResource(R.drawable.filledstar)
+                        listener.onFavButtonClick(adapterPosition)
+                    }
+                    else {
+                        favButton.setImageResource(R.drawable.blankstar)
+                    }
+                }
+                else -> {
+                    val position = adapterPosition
+                    if(position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position)
+                    }
+                }
             }
+
         }
     }
 

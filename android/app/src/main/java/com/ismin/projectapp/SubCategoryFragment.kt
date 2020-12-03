@@ -54,8 +54,8 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
     }
 
     override fun onFavButtonClick(position: Int) {
-        val clickedEvent = events[position]
         listener.addToFavorites(position)
+        //eventAdapter.refreshData(events)
     }
 
     override fun onAttach(context: Context) {
@@ -72,9 +72,7 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
         fun newInstance(eventsToDisplay: ArrayList<Event>): SubCategoryFragment {
             val bundle = Bundle()
             bundle.putSerializable(ARG_EVENTS, eventsToDisplay)
-
             val eventListFragment = SubCategoryFragment()
-
             eventListFragment.arguments = bundle
             return eventListFragment
         }

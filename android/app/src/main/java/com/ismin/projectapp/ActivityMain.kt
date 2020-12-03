@@ -60,8 +60,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
             }
         })
 
-        System.out.println(eventList.getEvent("ARIOL'S SHOW"))
-
         //updateList()
         //expandableListView = findViewById(R.id.expendableListView)
         //listViewAdapter = ExpendableListViewAdapter(this, categories, subCategories)
@@ -153,7 +151,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun addToFavorites(position: Int) {
         val event = eventList.getAllEventsSortedByTitle()[position]
-        eventList.getAllEventsSortedByTitle()[position].fav = true
-        favorites.addEvent(event)
+        //eventService.addToFav(event.id)
+        this.favorites.addEvent(event)
     }
 }
