@@ -50,13 +50,13 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         override fun onClick(v: View?) {
             when(v) {
                 favButton -> {
-                    if(favButton.background.equals(R.drawable.blankstar)) {
-                        favButton.setImageResource(R.drawable.filledstar)
-                        listener.onFavButtonClick(adapterPosition)
-                    }
-                    else {
+                    if(listener.isFav(adapterPosition)) {
                         favButton.setImageResource(R.drawable.blankstar)
                     }
+                    else {
+                        favButton.setImageResource(R.drawable.filledstar)
+                    }
+                    listener.onFavButtonClick(adapterPosition)
                 }
                 else -> {
                     val position = adapterPosition

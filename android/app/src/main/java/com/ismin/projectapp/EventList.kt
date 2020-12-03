@@ -9,7 +9,7 @@ class EventList {
     private val storage: ArrayList<Event> = ArrayList()
 
     fun addEvent(newEvent: Event) {
-        if(this.getEvent(newEvent.title) == null) { this.storage.add(newEvent) }
+        if(this.getEventByID(newEvent.id) == null) { this.storage.add(newEvent) }
     }
 
     fun getEvent(title: String): Event? {
@@ -17,7 +17,7 @@ class EventList {
     }
 
     fun getEventByID(id: String): Event? {
-        return this.storage.find { it.id == id }
+        return this.storage.find { it.id === id }
     }
 
     fun getAllEventsSortedByTitle(): ArrayList<Event> {
@@ -30,5 +30,9 @@ class EventList {
 
     fun getTotalNumberOfEvents(): Int {
         return this.storage.size
+    }
+
+    fun removeEvent(event: Event) {
+        this.storage.remove(event)
     }
 }

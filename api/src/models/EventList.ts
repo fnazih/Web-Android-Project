@@ -9,6 +9,7 @@ export class EventList {
     let data: DataSource[] = require("../../data.json")
     this.eventList = data.map((item) => {
       item.fields.id = item.recordid
+      item.fields.fav = false
       return item.fields
     })
     let selected = this.eventList[0].category;

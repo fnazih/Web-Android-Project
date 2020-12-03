@@ -119,9 +119,24 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         this.startActivity(intent)
     }
 
-    override fun addToFavorites(position: Int) {
+    override fun toggleFavorite(position: Int) {
         val event = eventList.getAllEventsSortedByTitle()[position]
-        eventService.addToFav(event.id)
-        this.favorites.addEvent(event)
+
+        eventService.addToFav(event.id, FavBody(!event.fav)).enqueue(object : Callback<Event> {
+            override fun onResponse(
+                call: Call<Event>,
+                response: Response<Event>
+            ) {
+            }
+            override fun onFailure(call: Call<Event>, t: Throwable) {
+                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+            }
+        })
+
+        if(event.fav) {
+            this.favorites.removeEvent(event)
+        } else {
+            this.favorites.addEvent(event)
+        }
     }
 }

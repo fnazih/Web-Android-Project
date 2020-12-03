@@ -32,4 +32,4 @@ data class Event(val id: String,
                  val price_detail: String,
                  val access_link: String,
                  val tags: String,
-                 var fav : Boolean?): Serializable
+                 var fav : Boolean): Serializable
