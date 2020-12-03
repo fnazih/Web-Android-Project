@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ExpandableListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_main.*
@@ -108,6 +109,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     }
 
     private fun displayEventList() {
+        val title: TextView = findViewById(R.id.mainActivityTitle)
+        title.visibility = View.VISIBLE
         val eventListFragmentTransaction = supportFragmentManager.beginTransaction()
         fragment = SubCategoryFragment.newInstance(this.eventList.getAllEventsSortedByTitle())
 
@@ -122,6 +125,8 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     }
 
     private fun displayFavorites() {
+        val title: TextView = findViewById(R.id.mainActivityTitle)
+        title.visibility = View.GONE
         val favoritesListFragmentTransaction = supportFragmentManager.beginTransaction()
         fragment = SubCategoryFragment.newInstance(this.favorites.getAllEventsSortedByTitle())
 
@@ -151,7 +156,7 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     override fun addToFavorites(position: Int) {
         val event = eventList.getAllEventsSortedByTitle()[position]
-        //eventService.addToFav(event.id)
+        eventService.addToFav(event.id)
         this.favorites.addEvent(event)
     }
 }

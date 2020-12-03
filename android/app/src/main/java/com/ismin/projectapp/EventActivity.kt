@@ -51,7 +51,7 @@ class EventActivity : AppCompatActivity() {
         eventDateStartView.text = event.date_start
         eventDateEndView.text = event.date_end
         eventLeadTextView.text = event.lead_text
-        eventDescriptionView.text = event.description
+        eventDescriptionView.text = android.text.Html.fromHtml(event.description).toString()
         addressNameView.text = event.address_name
         addressStreetView.text = event.address_street
         addressZipCodeView.text = event.address_zipcode

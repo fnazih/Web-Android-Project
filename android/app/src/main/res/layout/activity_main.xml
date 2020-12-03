@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:background="@color/vividRed"
         android:clickable="true"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:onClick="goToFavorites"
         android:text="@string/FavoritesButton"
         android:textColor="@color/lightBlue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,13 +24,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
-        android:onClick="goToFavorites"/>
+        android:focusable="true" />
 
     <FrameLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_width="407dp"
+        android:layout_height="518dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585"></FrameLayout>
+
+    <TextView
+        android:id="@+id/mainActivityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mainActivityTitle"
+        android:textSize="36dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

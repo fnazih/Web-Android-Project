@@ -24,6 +24,10 @@
             android:parentActivityName=".WelcomeActivity" />
         <activity android:name=".EventActivity"
             android:parentActivityName=".ActivityMain"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

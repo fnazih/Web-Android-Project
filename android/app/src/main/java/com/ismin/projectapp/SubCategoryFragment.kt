@@ -55,7 +55,7 @@ class SubCategoryFragment : Fragment(), onEventItemClickListener {
 
     override fun onFavButtonClick(position: Int) {
         listener.addToFavorites(position)
-        eventAdapter.refreshData(events)
+        //eventAdapter.refreshData(events)
     }
 
     override fun onAttach(context: Context) {

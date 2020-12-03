@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">Events in Paris</string>
-    <string name="main_title">Bienvenue sur notre application d\'Activités à Paris !</string>
+    <string name="main_title">Bienvenue sur notre application Events in Paris !</string>
     <string name="connectMessage">Veuillez cliquer sur le bouton suivant afin d\'accéder à vos favoris :</string>
     <string name="startButtonText">Commencer</string>
     <string name="appExplanation">Dans cette app, vous aurez accès à une base de données très complète listant un grand nombre d\'activités à faire à Paris.
-        Après avoir appuyé sur le bouton "Commencer", pour aurez accès à différentes listes contenant les événements à Paris.</string>
+        Après avoir appuyé sur le bouton "Commencer", vous aurez accès à différentes listes contenant les événements à Paris.</string>
     <string name="eventTitle">Titre event</string>
     <string name="leadTextString">Phrase descriptive de l\'event</string>
     <string name="descriptionEvent">Lorem ipsum dolores blablabla ca decrit l\'event blabla texte blabla c\'est long blabla ca grandit Lorem ipsum dolores blablabla ca decrit l\'event blabla texte blabla c\'est long blabla ca grandit</string>
@@ -16,4 +16,5 @@
     <string name="transportIndications">Indications de transports</string>
     <string name="categoryName">Nom categorie</string>
     <string name="FavoritesButton">Favoris</string>
+    <string name="mainActivityTitle">Choisis ton event !</string>
 </resources>
