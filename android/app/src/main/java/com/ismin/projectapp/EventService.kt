@@ -15,4 +15,7 @@ interface EventService {
 
     @PUT("events/{id}")
     fun addToFav(@Path("id") eventId: String, @Body() favBody: FavBody): Call<Event>
+
+    @GET("events/favs")
+    fun getFavorites(): Call<ArrayList<Event>>
 }

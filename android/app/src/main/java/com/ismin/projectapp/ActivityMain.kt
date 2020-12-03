@@ -64,6 +64,22 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
                 Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
             }
         })
+
+        eventService.getFavorites().enqueue(object : Callback<ArrayList<Event>> {
+            override fun onResponse(
+                call: Call<ArrayList<Event>>,
+                response: Response<ArrayList<Event>>
+            ) {
+                val favs = response.body()
+                favs?.forEach {
+                    favorites.addEvent(it)
+                }
+            }
+            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+            }
+        })
+
     }
 
     private fun displayEventList() {
