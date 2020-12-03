@@ -76,7 +76,7 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         Picasso.get().load(currentEvent.cover_url).into(holder.eventIcon)
         holder.eventDate.text = currentEvent.date_start
 
-        if(currentEvent.fav == true){
+        if(listener.isFav(position)){
             holder.favButton.setImageResource(R.drawable.filledstar)
         }
         else{
