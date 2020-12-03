@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class EventAdapter(private val events: ArrayList<Event>, private val listener: onEventItemClickListener): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-    private lateinit var favButt: Button
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.event_row_layout, parent, false)
@@ -76,5 +75,12 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         holder.eventTitle.text = currentEvent.title
         Picasso.get().load(currentEvent.cover_url).into(holder.eventIcon)
         holder.eventDate.text = currentEvent.date_start
+
+        if(currentEvent.fav == true){
+            holder.favButton.setImageResource(R.drawable.filledstar)
+        }
+        else{
+            holder.favButton.setImageResource(R.drawable.blankstar)
+        }
     }
 }
