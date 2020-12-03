@@ -6,7 +6,6 @@
 package com.ismin.projectapp
 
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,8 +13,6 @@ import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,10 +22,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val EVENTS_URL = "https://events-in-paris.cleverapps.io"
 
 class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener, MyActivityCallback {
-    //private lateinit var listViewAdapter : ExpendableListViewAdapter
-    private lateinit var categories: ArrayList<String>
-    private lateinit var subCategories: HashMap<String, ArrayList<String>>
-    //private lateinit var expandableListView: ExpandableListView
     private val eventList = EventList()
     private val favorites = EventList()
     private var fragment: SubCategoryFragment = SubCategoryFragment()
@@ -109,7 +102,6 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
         id: Long
     ): Boolean {
         displayEventList()
-
         return false
     }
 
