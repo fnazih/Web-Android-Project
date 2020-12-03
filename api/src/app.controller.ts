@@ -19,6 +19,11 @@ export class AppController {
     return await this.appService.list()
   }
 
+  @Get('favs')
+  async Fav(): Promise<EventDTO[]> {
+    return await this.appService.listFav()
+  }
+
   @Get(':id')
   async get(@Param('id') id: string): Promise<EventDTO> {
     return this.appService.get(id);
