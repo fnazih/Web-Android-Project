@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,24 +31,30 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     private lateinit var eventService: EventService
     private lateinit var myButton: Button
     private lateinit var aboutButton: Button
+    private lateinit var refreshButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         myButton = findViewById(R.id.favoritesButt)
+        myButton.text = "Favoris"
         myButton.setOnClickListener {
             if (myButton.text == "Favoris") {
-                goToFavorites()
+                refreshData()
+                myButton.text = "Events"
             }
             else {
-                displayEventList()
+                refreshData()
+                myButton.text = "Favoris"
             }
         }
 
         aboutButton = findViewById(R.id.aboutUsButton)
-        aboutButton.setOnClickListener {
-            goToAboutUs()
+        aboutButton.setOnClickListener { goToAboutUs() }
+        refreshButton = findViewById(R.id.refreshButton)
+        refreshButton.setOnClickListener {
+            refreshData()
         }
 
         val retrofit = Retrofit.Builder()
@@ -57,53 +64,18 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
         eventService = retrofit.create<EventService>(EventService::class.java)
 
-        eventService.getAllEventsSortedByTitle().enqueue(object : Callback<ArrayList<Event>> {
-            override fun onResponse(
-                call: Call<ArrayList<Event>>,
-                response: Response<ArrayList<Event>>
-            ) {
-                val allEvents = response.body()
-                allEvents?.forEach {
-                    eventList.addEvent(it)
-                }
-                displayEventList()
-            }
-            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
-            }
-        })
-
-        eventService.getFavorites().enqueue(object : Callback<ArrayList<Event>> {
-            override fun onResponse(
-                call: Call<ArrayList<Event>>,
-                response: Response<ArrayList<Event>>
-            ) {
-                val favs = response.body()
-                favs?.forEach {
-                    favorites.addEvent(it)
-                }
-            }
-            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
-            }
-        })
+        refreshData()
 
     }
 
     private fun displayEventList() {
-        val title: TextView = findViewById(R.id.mainActivityTitle)
+        val title: TextView = findViewById(R.id.activityViewTitle)
         title.visibility = View.VISIBLE
         val eventListFragmentTransaction = supportFragmentManager.beginTransaction()
         fragment = SubCategoryFragment.newInstance(this.eventList.getAllEventsSortedByTitle())
 
         eventListFragmentTransaction.replace(R.id.relativeLayout, fragment)
         eventListFragmentTransaction.commit()
-
-        myButton.text = "Favoris"
-    }
-
-    fun goToFavorites() {
-        displayFavorites()
     }
 
     fun goToAboutUs() {
@@ -119,15 +91,51 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     }
 
     private fun displayFavorites() {
-        val title: TextView = findViewById(R.id.mainActivityTitle)
-        title.visibility = View.GONE
+        val title: TextView = findViewById(R.id.activityViewTitle)
+        title.visibility = View.VISIBLE
         val favoritesListFragmentTransaction = supportFragmentManager.beginTransaction()
         fragment = SubCategoryFragment.newInstance(this.favorites.getAllEventsSortedByTitle())
 
         favoritesListFragmentTransaction.replace(R.id.relativeLayout, fragment)
         favoritesListFragmentTransaction.commit()
+    }
 
-        myButton.text = "Events"
+    private fun refreshData() {
+        if(myButton.text == "Favoris") {
+            this.eventList.flush()
+            eventService.getAllEventsSortedByTitle().enqueue(object : Callback<ArrayList<Event>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Event>>,
+                    response: Response<ArrayList<Event>>
+                ) {
+                    val allEvents = response.body()
+                    allEvents?.forEach {
+                        eventList.addEvent(it)
+                    }
+                    displayEventList()
+                }
+                override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                    Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+                }
+            })
+        } else {
+            this.favorites.flush()
+            eventService.getFavorites().enqueue(object : Callback<ArrayList<Event>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Event>>,
+                    response: Response<ArrayList<Event>>
+                ) {
+                    val favs = response.body()
+                    favs?.forEach {
+                        favorites.addEvent(it)
+                    }
+                    displayFavorites()
+                }
+                override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                    Toast.makeText(applicationContext, "Network error", Toast.LENGTH_LONG).show()
+                }
+            })
+        }
     }
 
     override fun onChildClick(

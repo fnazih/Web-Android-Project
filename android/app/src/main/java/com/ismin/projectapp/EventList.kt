@@ -8,6 +8,10 @@ package com.ismin.projectapp
 class EventList {
     private val storage: ArrayList<Event> = ArrayList()
 
+    fun flush() {
+        this.storage.clear()
+    }
+
     fun addEvent(newEvent: Event) {
         if(this.getEventByID(newEvent.id) == null) { this.storage.add(newEvent) }
     }
