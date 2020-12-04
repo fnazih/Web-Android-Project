@@ -9,6 +9,24 @@
     tools:context=".ActivityMain" >
 
     <Button
+        android:id="@+id/aboutUsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/vividRed"
+        android:paddingHorizontal="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="@string/aboutUsTitle"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <Button
         android:id="@+id/favoritesButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

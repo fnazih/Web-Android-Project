@@ -18,4 +18,12 @@
     <string name="FavoritesButton">Favoris</string>
     <string name="FavoritesButtonEvents">Events</string>
     <string name="mainActivityTitle">Choisis ton event !</string>
+    <string name="aboutUsTitle">A propos de l\'appli</string>
+    <string name="recupURL">URL de récupération des données : https://events-in-paris.cleverapps.io</string>
+    <string name="usedLibraries">Les principales librairies que nous avons utilisées sont les suivantes :</string>
+    <string name="retrofitdescription">Retrofit : permet d\'effecuter des requêtes vers internet et donc de récupérer la base de données.</string>
+    <string name="picassodescription">Picasso : permet de télécharger sur une application Android des images à partir de leur URL</string>
+    <string name="developpers">Développeurs</string>
+    <string name="fati" translatable="false">Fatima-Zohra NAZIH</string>
+    <string name="valou" translatable="false">Valentin POLLART</string>
 </resources>

@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +26,10 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
     private val eventList = EventList()
     private val favorites = EventList()
     private var fragment: SubCategoryFragment = SubCategoryFragment()
+    private var aboutUsFragment: AboutFragment = AboutFragment()
     private lateinit var eventService: EventService
     private lateinit var myButton: Button
+    private lateinit var aboutButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,11 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
             else {
                 displayEventList()
             }
+        }
+
+        aboutButton = findViewById(R.id.aboutUsButton)
+        aboutButton.setOnClickListener {
+            goToAboutUs()
         }
 
         val retrofit = Retrofit.Builder()
@@ -96,6 +104,18 @@ class ActivityMain: AppCompatActivity(), ExpandableListView.OnChildClickListener
 
     fun goToFavorites() {
         displayFavorites()
+    }
+
+    fun goToAboutUs() {
+        displayAboutUs()
+    }
+
+    private fun displayAboutUs() {
+        val aboutUsFragmentTransaction = supportFragmentManager.beginTransaction()
+        aboutUsFragment = AboutFragment.newInstance()
+        aboutUsFragmentTransaction.replace(R.id.relativeLayout, aboutUsFragment)
+        aboutUsFragmentTransaction.commit()
+        favoritesButt.text = "Events"
     }
 
     private fun displayFavorites() {

@@ -26,9 +26,14 @@ class EventAdapter(private val events: ArrayList<Event>, private val listener: o
         return this.events.size
     }
 
-    fun refreshData(updatedEvents: java.util.ArrayList<Event>) {
+    fun refreshData(updatedEvents: ArrayList<Event>) {
         events.clear()
-        events.addAll(updatedEvents)
+        System.out.println("Ca rentre dans refreshData")
+        System.out.println(updatedEvents)
+        for(event: Event in updatedEvents) {
+            events.add(event)
+            System.out.println(event)
+        }
         notifyDataSetChanged()
     }
 

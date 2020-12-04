@@ -17,4 +17,10 @@
     <string name="priceDetails">Price details</string>
     <string name="mainActivityTitle">Choose your event !</string>
     <string name="FavoritesButtonEvents">All events</string>
+    <string name="aboutUsTitle">About us</string>
+    <string name="recupURL">URL from where we get data : https://events-in-paris.cleverapps.io</string>
+    <string name="usedLibraries">The principal libraries that we have used are the following :</string>
+    <string name="retrofitdescription">Retrofit : allows us to make requests to the internet in order to get your database information</string>
+    <string name="picassodescription">Picasso : lets us download a picture on our Android app by using their URL</string>
+    <string name="developpers">Developpers :</string>
 </resources>
